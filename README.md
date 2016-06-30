@@ -1,0 +1,1 @@
+# cordova-plugin-nifty-push-icon
