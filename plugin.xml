@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-nifty-push-icon" version="0.5.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>NiftyPushIcon</name>
+    <author>Kenichi Naito</author>
+
+    <license>MIT</license>
+
+    <platform name="android">
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data android:name="smallIcon" android:resource="@drawable/nifty_push_icon"/>
+        </config-file>
+    </platform>
+
+    <hook type="after_prepare" src="scripts/afterPrepare.js" />
+
+</plugin>
