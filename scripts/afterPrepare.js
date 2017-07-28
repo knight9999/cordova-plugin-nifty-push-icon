@@ -32,7 +32,7 @@ module.exports = function(context) {
       niftyPushIcon = "www/nifty_push_icon.png";
     }
 
-    var resolutions = [ "ldpi" , "mdpi" , "hdpi" , "xhdpi" , "xxhdpi" ];
+    var resolutions = [ "ldpi" , "mdpi" , "hdpi" , "xhdpi" , "xxhdpi" , "xxxhdpi" ];
 
     for (var i = 0;i<resolutions.length;i++) {
       var resolution = resolutions[i];
@@ -44,7 +44,7 @@ module.exports = function(context) {
       try {
         var stat = fs.statSync( niftyPushIconRes );
         if (stat.isFile()) {
-          var dir = 'platforms/android/res/drawable-' + resolution;
+          dir = 'platforms/android/res/mipmap-' + resolution;
           stat = fs.statSync( dir );
           if (stat.isDirectory()) {
             fs.createReadStream( niftyPushIconRes ).pipe(fs.createWriteStream(dir + '/nifty_push_icon.png'));
