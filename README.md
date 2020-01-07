@@ -60,7 +60,7 @@ Cordova 9以後であれば、このプラグインを使わなくてもconfig.x
 （正確には、Cordova 9以後というより、プラットフォームバージョンがCordova-Android 8.0.0以後の場合）
 というか、このプラグインではそのままではCorodva 9では機能しません。（配置するディレクトリ構造が変わったため）
 
-例：まず、config.xmlにリソースを設定します。
+Cordova 9で本プラグインを使わずに、設定する例：まず、config.xmlにリソースを設定します。
 
 ```
 <resource-file src="res/android/icon_white/ldpi_my_icon.png" target="app/src/main/res/drawable-ldpi/my_icon.png" />
@@ -71,7 +71,7 @@ Cordova 9以後であれば、このプラグインを使わなくてもconfig.x
 
 この場合、`res/android/icon_white` ディレクトリ以下に、`ldpi_my_icon.png`、`mdpi_my_icon.png`、`hdpi_my_icon.png`、`xhdpi_my_icon.png`を配置します。
 
-また、`application`の`AndroidManifest.xml`を変更するために、config.xmlに次を追加します。
+次に、`application`の`AndroidManifest.xml`を変更するために、config.xmlに次を追加します。
 
 ```
 <custom-config-file parent="./application" target="AndroidManifest.xml">
@@ -81,7 +81,7 @@ Cordova 9以後であれば、このプラグインを使わなくてもconfig.x
 ```
 (my_iconのところは、リソースのところで設定した画像ファイル名から`.png`を取り除いたものです。また、smallIconColorの値は適時変更してください）
 
-上記はcustom-configプラグインを使っています(Monacaではデフォルトで使用）が、通常のconfig-fileでも同様にできると思います。その場合、次のようになると思います。
+ここではcustom-configプラグインを使っています(Monacaではデフォルトで使用されています）が、custom-configプラグインを使わない場合、通常のconfig-fileでも設定できると思います。その場合、次のようになります。
 
 ```
 <config-file target="AndroidManifest.xml" parent="/manifest/application">
@@ -92,6 +92,6 @@ Cordova 9以後であれば、このプラグインを使わなくてもconfig.x
 
 ## Cordova 7.1の場合
 
-蛇足になりますが、Cordova 7.1でCordova-Android 7.x.xを使う場合は、本プラグインそのままでも動作すると思いますが、Cordova 9と同様に本プラグインを使わなくても動作すると思います。
-その場合、Cordova 9で設定していた上記のリソースタグのtargetを `target="app/src/main/res/drawable-ldpi/my_icon.png"` ではなく `target="platforms/android/res/drawable-ldpi/my_icon.png` のようにすれば動作すると思います。 
+蛇足になりますが、Cordova 7.1でCordova-Android 7.x.xを使う場合は、本プラグインそのままでも動作すると思いますが、Cordova 9と同様に本プラグインを使わなくても動作します。
 
+その場合、Cordova 9で設定していた上記のリソースタグのtargetを `target="app/src/main/res/drawable-ldpi/my_icon.png"` ではなく `target="platforms/android/res/drawable-ldpi/my_icon.png` のようにすれば動作します。
