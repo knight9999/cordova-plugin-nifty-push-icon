@@ -53,3 +53,39 @@ Cordova 6.5のプロジェクトでは、本プラグインのバージョン0.7
 コピー元のファイル名がなんであっても、コピー先はnifty_push_icon.pngファイルとなります。
 
 Cordova 6.5からは、drawableではなくmipmapにおくようになりました。
+
+## Cordova 9以後について
+
+Cordova 9以後であれば、このプラグインを使わなくてもconfig.xmlだけで、通知アイコンを設定することができます。
+（正確には、プラットフォームバージョンがCordova-Android 8.0.0以後）
+
+例：まず、config.xmlにリソースを設定します。
+
+```
+<resource-file src="res/android/icon_white/ldpi_my_icon.png" target="app/src/main/res/drawable-ldpi/my_icon.png" />
+<resource-file src="res/android/icon_white/mdpi_my_icon.png" target="app/src/main/res/drawable-mdpi/my_icon.png" />
+<resource-file src="res/android/icon_white/hdpi_my_icon.png" target="app/src/main/res/drawable-hdpi/my_icon.png" />
+<resource-file src="res/android/icon_white/xhdpi_my_icon.png" target="app/src/main/res/drawable-xhdpi/my_icon.png" />
+```
+
+この場合、`res/android/icon_white` ディレクトリ以下に、`ldpi_my_icon.png`、`mdpi_my_icon.png`、`hdpi_my_icon.png`、`xhdpi_my_icon.png`を配置します。
+
+また、`application`の`AndroidManifest.xml`を変更するために、config.xmlに次を追加します。
+
+```
+<custom-config-file parent="./application" target="AndroidManifest.xml">
+    <meta-data android:name="smallIcon" android:resource="@drawable/my_icon" />
+    <meta-data android:name="smallIconColor" android:value="#4040EF" />
+</custom-config-file>
+```
+(my_iconのところは、リソースのところで設定した画像ファイル名から`.png`を取り除いたものです。また、smallIconColorの値は適時変更してください）
+
+上記はcustom-configプラグインを使っています(Monacaではデフォルトで使用）が、通常のconfig-fileでも同様にできると思います。その場合、次のようになると思います。
+
+```
+<config-file target="AndroidManifest.xml" parent="/manifest/application">
+    <meta-data android:name="smallIcon" android:resource="@drawable/my_icon" />
+    <meta-data android:name="smallIconColor" android:value="#4040EF" />
+</config-file>
+
+蛇足になりますが、Cordova 7.1でCordova-Android 7.x.xを使う場合は、上記のリソースタグのtargetを `target="app/src/main/res/drawable-ldpi/my_icon.png"` ではなく `target="platforms/android/res/drawable-ldpi/my_icon.png` のようにすれば動作すると思います。 
