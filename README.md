@@ -57,7 +57,7 @@ Cordova 6.5からは、drawableではなくmipmapにおくようになりまし�
 ## Cordova 9以後について
 
 Cordova 9以後であれば、このプラグインを使わなくてもconfig.xmlだけで、通知アイコンを設定することができます。
-（正確には、プラットフォームバージョンがCordova-Android 8.0.0以後）
+（正確には、Cordova 9以後というより、プラットフォームバージョンがCordova-Android 8.0.0以後の場合）
 
 例：まず、config.xmlにリソースを設定します。
 
@@ -87,5 +87,6 @@ Cordova 9以後であれば、このプラグインを使わなくてもconfig.x
     <meta-data android:name="smallIcon" android:resource="@drawable/my_icon" />
     <meta-data android:name="smallIconColor" android:value="#4040EF" />
 </config-file>
+```
 
 蛇足になりますが、Cordova 7.1でCordova-Android 7.x.xを使う場合は、上記のリソースタグのtargetを `target="app/src/main/res/drawable-ldpi/my_icon.png"` ではなく `target="platforms/android/res/drawable-ldpi/my_icon.png` のようにすれば動作すると思います。 
